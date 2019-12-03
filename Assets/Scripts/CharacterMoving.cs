@@ -40,6 +40,16 @@ public class CharacterMoving : MonoBehaviour
         if(isGrounded && Input.GetKeyDown(KeyCode.Space)){
             _body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
+        MovingPlatform platform = null;
+        if (hit != null){
+            platform = hit.GetComponent<MovingPlatform>();
+        }
+        if(platform != null){
+            transform.parent = platform.transform;
+        }
+        else {
+            transform.parent = null;
+        }
         _anim.SetFloat("speed", Mathf.Abs(deltaX));
         transform.localScale = new Vector3 (Mathf.Sign(deltaX), 1, 1);
     }
