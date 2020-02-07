@@ -15,10 +15,4 @@ public class Hurt : MonoBehaviour
     {
         
     }
-    void OnTriggerEnter2D(Collider2D other){
-            isDestroyable target = other.GetComponent<isDestroyable>();
-            if (target != null){
-                other.transform.SetPositionAndRotation( new Vector3(-3.07f, -0.994f, 0), other.transform.rotation);
-            }
-        }
 }
