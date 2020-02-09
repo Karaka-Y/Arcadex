@@ -16,6 +16,9 @@ public class UI_Manager : MonoBehaviour
     {
         UnityEngine.SceneManagement.SceneManager.LoadScene("SampleScene");
     }
+    public void ExitToMainMenu(){
+        UnityEngine.SceneManagement.SceneManager.LoadScene("TitleScene");
+    }
 
     public void SettingsOpen()
     {
@@ -36,4 +39,5 @@ public class UI_Manager : MonoBehaviour
         menuPanel.SetBool("isHidden", !isHidden);
         gearAnimation.SetBool("isHidden", !isHidden);
     }
+
 }

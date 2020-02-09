@@ -1551,7 +1551,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8cd44ece1fd36154aa2232d4399fe688, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 192fb5caa88facb4fa21c396e06e13cc, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -1671,6 +1671,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b7826025fbb456e4d848d8a11e646ee1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gearAnimation: {fileID: 0}
+  menuPanel: {fileID: 0}
   startButton: {fileID: 476219904}
   settingsButton: {fileID: 421626063}
   exitButton: {fileID: 1012992254}
