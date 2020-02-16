@@ -9,13 +9,14 @@ public class LevelManager : MonoBehaviour
     public Text livesLabel;
     public int lives = 3;
     public GameObject defeatPanel;
+    public GameObject victoryPanel;
     public GameObject character;
     // Start is called before the first frame update
     void Start()
     {
         livesLabel.text = lives.ToString();
         defeatPanel.SetActive(false);
-
+        victoryPanel.SetActive(false);
     }
 
     // Update is called once per frame
@@ -31,6 +32,10 @@ public class LevelManager : MonoBehaviour
             defeatPanel.SetActive(true);
             character.SetActive(false);
         }
+    }
+    public void LevelCompleted(){
+        victoryPanel.SetActive(true);
+        character.SetActive(false);
     }
 
 }
