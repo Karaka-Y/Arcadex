@@ -10,6 +10,7 @@ public class Item : MonoBehaviour
     public string description;
     public Sprite ItemIcon;
     private SpriteRenderer itemRenderer;
+    public int count = 1;
     // Start is called before the first frame update
     void Start()
     {   
