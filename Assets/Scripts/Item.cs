@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Item : MonoBehaviour
 {
+    //item info is a scriptable object that contains all information of the particular item
     public ItemInfo itemInfo;
     public int Id;
     public new string name;
@@ -14,6 +15,7 @@ public class Item : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {   
+        //initiate all item information from scriptable object
         this.Id = itemInfo.Id;
         this.name = itemInfo.name;
         this.description = itemInfo.description;
