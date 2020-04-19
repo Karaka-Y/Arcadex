@@ -28257,8 +28257,9 @@ GameObject:
   - component: {fileID: 1835499709}
   - component: {fileID: 1835499708}
   - component: {fileID: 1835499707}
+  - component: {fileID: 1835499710}
   m_Layer: 5
-  m_Name: Button
+  m_Name: Jumping_button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28325,18 +28326,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1835499708}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2003492829}
-        m_MethodName: Jump
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1835499708
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -28373,6 +28363,34 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1835499705}
   m_CullTransparentMesh: 0
+--- !u!114 &1835499710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1835499705}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2003492834}
+          m_MethodName: Jumping
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1001 &1852259297
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28831,7 +28849,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   movingRight: 0
   speed: 500
-  jumpForce: 12
+  jumpForce: 11
 --- !u!50 &2003492830
 Rigidbody2D:
   serializedVersion: 4
@@ -28919,6 +28937,7 @@ MonoBehaviour:
   moving: 0
   speed: 500
   _charBody: {fileID: 2003492830}
+  jumpForce: 11
 --- !u!1 &2010179463
 GameObject:
   m_ObjectHideFlags: 0
@@ -28931,6 +28950,7 @@ GameObject:
   - component: {fileID: 2010179467}
   - component: {fileID: 2010179466}
   - component: {fileID: 2010179465}
+  - component: {fileID: 2010179468}
   m_Layer: 5
   m_Name: Left_button
   m_TagString: Untagged
@@ -29036,6 +29056,49 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2010179463}
   m_CullTransparentMesh: 0
+--- !u!114 &2010179468
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2010179463}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d0b148fe25e99eb48b9724523833bab1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Delegates:
+  - eventID: 2
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2003492834}
+          m_MethodName: LeftButtonPressed
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
+  - eventID: 3
+    callback:
+      m_PersistentCalls:
+        m_Calls:
+        - m_Target: {fileID: 2003492834}
+          m_MethodName: LeftButtonReleased
+          m_Mode: 1
+          m_Arguments:
+            m_ObjectArgument: {fileID: 0}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+            m_IntArgument: 0
+            m_FloatArgument: 0
+            m_StringArgument: 
+            m_BoolArgument: 0
+          m_CallState: 2
 --- !u!1 &2069980168
 GameObject:
   m_ObjectHideFlags: 0

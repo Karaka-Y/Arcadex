@@ -5,12 +5,11 @@ using UnityEngine;
 public class CharacterMoving : MonoBehaviour
 {   
     public bool movingRight;
-    private bool jumping = false;
     public float speed = 500f; 
     private Animator _anim;
     private Rigidbody2D _body;
     private BoxCollider2D _box;
-    public float jumpForce = 3.0f;
+    public float jumpForce = 11.0f;
     // Start is called before the first frame update
     void Start()
     {
@@ -33,7 +32,6 @@ public class CharacterMoving : MonoBehaviour
 
         //movement vector is assigned to rigidbody2D component, so character moves
         _body.velocity = movement;
-
         // bounds are used as a part of character's jumping, character is not allowed to jump pushing off air, so
         // it will check if the ground is below the character
 
@@ -62,9 +60,8 @@ public class CharacterMoving : MonoBehaviour
 
         //when we allowed to jump and 'Space' is pressed - we jump
         if(isGrounded && Input.GetKeyDown(KeyCode.Space)){
-            jumping = false;
             //we add impulse to the character that throw it up in the air
-            _body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+           _body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
 
         //used variable to recognize object under the character, here we recognize definitely moving platform tilemap
@@ -94,5 +91,12 @@ public class CharacterMoving : MonoBehaviour
         //here is a trick to reflct our character and make it being turned left
         transform.localScale = new Vector3 (Mathf.Sign(deltaX), 1, 1);
     }
-
+    public static bool GroundCheck(BoxCollider2D _box){
+            Vector3 max = _box.bounds.max;
+            Vector3 min = _box.bounds.min;
+            Vector2 Corner1 = new Vector2(max.x, min.y - 0.1f);
+            Vector2 Corner2 = new Vector2(min.x, min.y - .2f);
+            Collider2D hit = Physics2D.OverlapArea(Corner1, Corner2);
+            return hit != null;
+        }
 }
