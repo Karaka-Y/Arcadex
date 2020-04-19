@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class CharacterMoving : MonoBehaviour
 {   
+    public bool movingRight;
+    private bool jumping = false;
     public float speed = 500f; 
     private Animator _anim;
     private Rigidbody2D _body;
@@ -21,6 +23,7 @@ public class CharacterMoving : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         //used player input ('A', 'D' or arrow buttons) multiplied by speed and Time.deltatime (to make moving frame independent)
         float deltaX = Input.GetAxis("Horizontal") * speed * Time.deltaTime;
 
@@ -59,7 +62,7 @@ public class CharacterMoving : MonoBehaviour
 
         //when we allowed to jump and 'Space' is pressed - we jump
         if(isGrounded && Input.GetKeyDown(KeyCode.Space)){
-
+            jumping = false;
             //we add impulse to the character that throw it up in the air
             _body.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
         }
@@ -91,4 +94,5 @@ public class CharacterMoving : MonoBehaviour
         //here is a trick to reflct our character and make it being turned left
         transform.localScale = new Vector3 (Mathf.Sign(deltaX), 1, 1);
     }
+
 }
