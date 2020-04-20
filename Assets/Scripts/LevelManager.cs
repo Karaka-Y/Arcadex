@@ -12,6 +12,7 @@ public class LevelManager : MonoBehaviour
     public int lives = 3;
     public GameObject defeatPanel;
     public GameObject victoryPanel;
+    //public GameObject awarePanel;
     public GameObject character;
     // Start is called before the first frame update
     void Start()
@@ -50,6 +51,9 @@ public class LevelManager : MonoBehaviour
         //character deactivates and victory panel appears
         victoryPanel.SetActive(true);
         character.SetActive(false);
+    }
+    public void NotEnoughItems(int availableCount){
+        //awarePanel.SetActive(true);
     }
 
 }
