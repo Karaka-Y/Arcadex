@@ -20,6 +20,7 @@ public class PassLevelCollider : MonoBehaviour
                 //if character reacted with cup collider, we call end-level-function
                 if(PassItemCount() == requiredCount){
                 manager.LevelCompleted();}
+                else {manager.NotEnoughItems(PassItemCount(), requiredCount);}
                 Debug.Log("Items collected: " + PassItemCount());
             }
     }

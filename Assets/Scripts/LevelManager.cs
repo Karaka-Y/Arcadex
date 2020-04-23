@@ -9,6 +9,8 @@ using System;
 public class LevelManager : MonoBehaviour
 {   
     public Text livesLabel;
+    public GameObject levelConditionPanel;
+    public Text collectedCrystals;
     public int lives = 3;
     public GameObject defeatPanel;
     public GameObject victoryPanel;
@@ -52,8 +54,9 @@ public class LevelManager : MonoBehaviour
         victoryPanel.SetActive(true);
         character.SetActive(false);
     }
-    public void NotEnoughItems(int availableCount){
-        //awarePanel.SetActive(true);
+    public void NotEnoughItems(int availableCount, int requiredCount){
+        collectedCrystals.text = String.Format("Collect {0} more crystals to pass the level", requiredCount - availableCount);
+        levelConditionPanel.SetActive(true);
     }
 
 }
