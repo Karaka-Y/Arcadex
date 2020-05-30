@@ -7,15 +7,13 @@ using UnityEngine;
 //inventory class for game
 public class Inventory : MonoBehaviour
 {
-    //when item picked up we might have some things to be updated, such as UI
+    
     public delegate void OnItemChanged();
-    //event
     public OnItemChanged onItemChangedCallback;
-    public int space = 20;
-    public int stackCapacity = 5;
+    public int space = 20; //maximum inventory capacity
+    public int stackCapacity = 5; //define how many items of the same type can be stacked as one item
     private decimal stackOvercount = 0;
-    //at this time only one inventory can be in the game, character's inventory
-    //so i use singleton to make it and to get easy acess to the inventory from another classes
+    
     #region Singleton
     public static Inventory instance;
     void Awake(){
@@ -28,12 +26,10 @@ public class Inventory : MonoBehaviour
     #endregion
     public List<Item> items = new List<Item>();
     
-    //methot that chung items to stacks (like in World of Warcraft or another RPG)
-    //character picks some items and then they adds to the inventory as one or some stacks (or only update existent stacks)
+    //methot that chunk items to stacks (like in World of Warcraft or another RPG)
+    //character picks some items and then they adds to the inventory as one or several stacks (or only update existent stacks)
     public bool PutItem (Item item){
-        //i get all not fulled stacks of the same item in the inventory
         var selectedItems = from i in items where ((i.Id == item.Id) && (i.count < stackCapacity)) select i;
-        //if this items have enough place we add items from those we picked up to this not filled to fill them completely
         foreach(var selectedItem in selectedItems){
             int freeSpace = stackCapacity - selectedItem.count;
             //if we picked less items than place to make full stack we just add them to existent stack and ignore item component
@@ -64,6 +60,7 @@ public class Inventory : MonoBehaviour
             Debug.Log("Not enough room in Inventory");
             return false;
         }
+        //if PutItem method is called all observers will be notified
         if (onItemChangedCallback != null){
 
         onItemChangedCallback.Invoke();
@@ -72,18 +69,17 @@ public class Inventory : MonoBehaviour
         Debug.Log("Item added to the Inventory, Name: " + item.name);
         return true;
     }
-    //this method created becouse i don't know how to get deep copy of the component
-    //I instantiate new item (copy all game object and get his component)
-    //of course I make this item inactive, becouse i dont want to pick up it after creating
+    
+    //instantiate item to put it to the inventory
+    //item is set inactive to prevent its picking up
     private Item NewItemCreator(Item _item, int count){
         Item newItem = Instantiate(_item).GetComponent<Item>();
         newItem.gameObject.SetActive(false);
         newItem.count = count;
         return newItem;
     }
-    //a little mathematics to recycle all items that we picked befor adding to the inventory
-    //stackovercount shows how much times we exceed stack count (if stack capacity = 20 and we have picked up 106 items - stackovercount
-    //will be equal to 5 - that mean we need to create five new stacks in the inventory and add new item with count equals to 6)
+    
+    //chunk all picked up items to stacks
     private void ChunkItems(Item item, out decimal stackOvercount){
         decimal itemCount = (decimal)item.count;
         stackOvercount = Truncate(itemCount / (decimal)stackCapacity);

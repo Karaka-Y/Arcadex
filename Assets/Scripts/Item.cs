@@ -12,7 +12,7 @@ public class Item : MonoBehaviour
     public Sprite ItemIcon;
     private SpriteRenderer itemRenderer;
     public int count = 1;
-    // Start is called before the first frame update
+
     void Start()
     {   
         //initiate all item information from scriptable object
@@ -24,11 +24,5 @@ public class Item : MonoBehaviour
         itemRenderer = GetComponent<SpriteRenderer>();
         itemRenderer.sprite = this.ItemIcon;
         itemRenderer.sortingOrder = 5;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+
 //class that moves platform
 public class MovingPlatform : MonoBehaviour
 {
@@ -10,13 +11,11 @@ public class MovingPlatform : MonoBehaviour
     private Vector3 _startPos;
     private float _trackPercent = 0;
     private int _direction = 1;
-    // Start is called before the first frame update
     void Start()
     {
         _startPos = transform.position;
     }
 
-    // Update is called once per frame
     void Update()
     {
         //after one second trackPercent will equal to 0,5 (-0,5) or half of distance that platform should pass

@@ -7,9 +7,6 @@ public class isDestroyable : MonoBehaviour
 {
     public LevelManager manager;
 
-    //when character's collider interacts with other objects we try to get 'Hurt' component from them
-    //if they have it - character teleports to the start of level
-    //also this function calls characterDestroyed function that decrease it's lives
     void OnTriggerEnter2D(Collider2D other){
             Hurt target = other.GetComponent<Hurt>();
             if (target != null){

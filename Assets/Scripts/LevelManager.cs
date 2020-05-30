@@ -13,18 +13,13 @@ public class LevelManager : MonoBehaviour
     public GameObject defeatPanel;
     public GameObject victoryPanel;
     public GameObject character;
-    // Start is called before the first frame update
+
     void Start()
     {
-        //here we show choosen lives count in upper-left corner
         livesLabel.text = lives.ToString();
-
-        //end deactivate (set initial state) other UI panels
         defeatPanel.SetActive(false);
         victoryPanel.SetActive(false);
     }
-
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKey("escape"))
@@ -33,11 +28,9 @@ public class LevelManager : MonoBehaviour
 
     //this function calls when character collider interacts with other colliders of objects that have 'Hurt' component attached
     public void CharacterDestroyed(){
-        //count of lives is decreased and shown in UI
         lives--;
         livesLabel.text = lives.ToString();
 
-        //end if we have no more lives the defeat panel activates and character object sets as inactive
         if(lives == 0){
             defeatPanel.SetActive(true);
             character.SetActive(false);
@@ -46,8 +39,6 @@ public class LevelManager : MonoBehaviour
 
     //if character reach the cup collider this function is called
     public void LevelCompleted(){
-
-        //character deactivates and victory panel appears
         victoryPanel.SetActive(true);
         character.SetActive(false);
     }
